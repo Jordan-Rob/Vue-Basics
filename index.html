@@ -15,6 +15,15 @@
             <span v-else>show</span>
         </button>
         <div v-if="condi">
+            <h3>Books</h3>
+            <ul>
+                <li v-for="book in filteredBooks" :class='{ fav:book.isFave}' @click='toggleFave(book)'>
+                    <p>{{ book.title }}</p>
+                    <p>{{ book.author }}</p>
+                    <img :src="book.img" :alt="book.title" >
+                </li>
+            </ul>
+            <br>
             <p>{{ title }} - {{ name }} - {{ age }}</p>
             <button v-on:click='()=>{age++}'>Increase Age</button>
             <button v-on:click='()=>{age--}'>Decrease Age</button>
@@ -26,7 +35,7 @@
         <div class="box" @mouseover='handleEvent'>mouseover</div>
         <div class="box" @mouseleave='handleEvent'>mouseleave</div>
         <div class="box" @dblclick='handleEvent'>double click</div>
-        <div class="box"></div>
+        <div class="box" @mousemove='handleMouseMove'>position: x - {{ x }}  y - {{ y }}</div>
 
     </div>
     <script src="app.js"></script>
